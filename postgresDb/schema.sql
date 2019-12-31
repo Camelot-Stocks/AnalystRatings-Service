@@ -1,21 +1,21 @@
 
 DROP TABLE IF EXISTS stocks, analysts, reviews;
  CREATE TABLE stocks (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   name TEXT,
   buySummary VARCHAR(150),
   sellSummary VARCHAR(150)
  );
 
 CREATE TABLE analysts (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   name TEXT,
   year SMALLINT,
   company TEXT
 );
 
 CREATE TABLE reviews (
-  id INTEGER PRIMARY KEY, 
+  id SERIAL PRIMARY KEY, 
   stockId INTEGER,
   analystId INTEGER,
   buy SMALLINT,
