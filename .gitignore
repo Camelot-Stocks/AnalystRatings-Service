@@ -1,2 +1,5 @@
 node_modules
 package-lock.json
+postgresDb/generator/analysts.csv
+postgresDb/generator/stocks.csv
+postgresDb/generator/reviews.csv
