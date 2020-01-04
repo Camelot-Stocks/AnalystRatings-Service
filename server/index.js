@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const Rating = require('../database/Rating.js');
 const cors = require('cors');
+var nr = require('newrelic');
 
 app.use('/', express.static(path.join(__dirname, '../dist')));
 app.use(cors());

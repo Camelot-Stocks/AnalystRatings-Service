@@ -49,6 +49,7 @@
     "moment": "^2.24.0",
     "mongoose": "^5.7.13",
     "nano": "^8.1.0",
+    "newrelic": "^6.2.0",
     "node-cassandra-cql": "^0.4.4",
     "nodemon": "^2.0.1",
     "pg": "^7.15.1",
