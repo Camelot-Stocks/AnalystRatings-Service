@@ -15,27 +15,10 @@ CREATE TABLE analysts (
 );
 
 CREATE TABLE reviews (
-  id SERIAL PRIMARY KEY, 
+  id INT PRIMARY KEY, 
   stockId INTEGER,
   analystId INTEGER,
   buy SMALLINT,
   hold SMALLINT,
   sell SMALLINT
 );
-
-
--- CREATE TABLE reviews (
---   id SERIAL PRIMARY KEY, 
---   stockId INTEGER REFERENCES stocks(id),
---   analystId INTEGER REFERENCES analysts(id),
---   buy SMALLINT,
---   hold SMALLINT,
---   sell SMALLINT
--- );
-
--- CREATE TABLE item (
---   id SERIAL PRIMARY KEY,
---   name TEXT,
---   buySummary VARCHAR(150),
---   sellSummary VARCHAR(150)
---  );

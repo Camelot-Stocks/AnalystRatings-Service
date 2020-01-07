@@ -1,0 +1,13 @@
+config:
+  target: "http://localhost:3005"
+  phases:
+    - duration: 60
+      arrivalRate: 20
+      rampTo: 445
+    # - duration: 10
+    #   arrivalRate: 445
+scenarios:
+  - name: "get reviews using stock's id"
+    flow:
+      - get:
+          url: "/ratings/getData/{{ $randomNumber(1,1000000) }}"

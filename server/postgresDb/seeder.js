@@ -27,21 +27,26 @@ let seedAnalysts = () => {
   })
 };
 
-let seedReviews = () => {
-  pool.query(`COPY reviews(stockId,analystId,buy,hold,sell) FROM '${path.resolve('generator/reviews.csv')}' DELIMITER ',';`, (err, data) => {
-    if (err) {
-      console.log(err)
-    }
-  })
-}
+// let seedReviews = () => {
+//   for (var i = 1; i < 11; i++) {
+//     pool.query(`COPY reviews(id, stockId,analystId,buy,hold,sell) FROM '${path.resolve(`generator/reviews${i}.csv`)}' DELIMITER ',';`, (err, data) => {
+//       if (err) {
+//         console.log(err)
+//       }
+//     })
+//   }
+// }
+
 
 pool.connect()
   .then(() => console.log('connected successfully'))
-  .then(() => seedStocks())
-  .then(() => console.log('Seed stocks successful!'))
-  .then(() => seedAnalysts())
-  .then(() => console.log('Seed analysts successfully!'))
-  .then(() => seedReviews())
-  .then(() => console.log('Seed reviews successfully!'))
-  .catch(e => console.log(e))
+  // .then(() => seedStocks())
+  // .then(() => console.log('Seed stocks successful!'))
+  // .then(() => seedAnalysts())
+  // .then(() => console.log('Seed analysts successfully!'))
+  // .then(() => seedReviews())
+  // .then(() => console.log('Seed reviews successfully!'))
+  // .catch(e => console.log(e))
   .then(() => pool.end())
+
+  module.exports = pool;
