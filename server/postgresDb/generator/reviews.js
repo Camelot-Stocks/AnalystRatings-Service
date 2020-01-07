@@ -4,8 +4,8 @@ var writer = csvWriter();
 var counter = 0;
 
 const reviewsGen = () => {
-  writer.pipe(fs.createWriteStream('reviews10.csv'));
-  for (var i = 90000001; i < 100000001; i++) {
+  writer.pipe(fs.createWriteStream('reviews8.csv'));
+  for (var i = 70000001; i < 80000001; i++) {
     let stockId = Math.floor(Math.random() * Math.floor(1000000)) + 1;
     let analystId = Math.floor(Math.random() * Math.floor(1000000)) + 1;
     let buy = Math.floor(Math.random() * 2);

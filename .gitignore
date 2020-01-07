@@ -1,10 +1,5 @@
 node_modules
 newrelic.js
 package-lock.json
-postgresDb/generator/analysts.csv
-postgresDb/generator/stocks.csv
-postgresDb/generator/reviews.csv
-cassandradb/generator/analysts.csv
-cassandradb/generator/stocks.csv
-cassandradb/generator/reviews.csv
-analyst-rating-service.pem
+analalyst-ratings-service.pem
+
