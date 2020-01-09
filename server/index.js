@@ -13,7 +13,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 app.get('/ratings/getData/:id', (req, res) => {
     var id = req.params.id;
     controller.Get.getReviews(id, res);
