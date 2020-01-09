@@ -8,7 +8,6 @@ class Ratings extends React.Component {
     constructor() {
         super();
         this.state = {
-            listData: [],
             currentData: {},
             length: '',
             color: 'white',
@@ -21,8 +20,8 @@ class Ratings extends React.Component {
     componentDidMount() {
         this.changeColor();
         axios.get('/ratings/getData/1').then((response) => {
-            // console.log(response.data);
-            this.getRealData(response.data);
+            console.log(response.data);
+            this.getRealData(response.data.rows);
             var collapseBuy = document.getElementById("buy-collapse");
             collapseBuy.style.maxHeight = '0px';
             var collapseSell = document.getElementById("sell-collapse");
@@ -49,7 +48,7 @@ class Ratings extends React.Component {
         }
         this.setState({ 
             currentData: display,
-            // length: response.data.length
+            length: array.lengthh
         });
         console.log(display);
     }

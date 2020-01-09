@@ -3,7 +3,6 @@ const app = express()
 const port = 3005
 const path = require('path');
 const bodyParser = require('body-parser');
-const Rating = require('../database/Rating.js');
 const cors = require('cors');
 const nr = require('newrelic');
 const controller =  require('./postgresDb/controller.js');
