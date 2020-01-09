@@ -10,8 +10,9 @@ const connectionString = 'postgres://hien@localhost:5432/stocks_db';
 const db = pgp(connectionString);
 
 const pool = new Pool({
-  host: '52.53.71.156',
+  host: 'localhost',
   database: 'stocks_db',
+  user: 'hien',
   port: 5432
 });
 
