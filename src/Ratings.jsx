@@ -8,23 +8,50 @@ class Ratings extends React.Component {
     constructor() {
         super();
         this.state = {
+            listData: [],
             currentData: {},
+            length: '',
             color: 'white',
             circleColor: 'white',
             priceTag: ''
         }
+        this.getRealData = this.getRealData.bind(this);
     }
 
     componentDidMount() {
         this.changeColor();
         axios.get('/ratings/getData/1').then((response) => {
-            this.setState({ currentData: response.data });
+            // console.log(response.data);
+            this.getRealData(response.data);
             var collapseBuy = document.getElementById("buy-collapse");
             collapseBuy.style.maxHeight = '0px';
             var collapseSell = document.getElementById("sell-collapse");
             collapseSell.style.maxHeight = '0px';
         }).catch((err) => {
         })
+        
+    }
+    getRealData(arr) {
+        // console.log('hi');
+        // console.log(this.state.listData);
+        let buy = 0;
+        let hold = 0;
+        let sell = 0;
+        for (var i = 0; i < arr.length; i++) {
+            buy += arr[i].buy;
+            hold += arr[i].hold;
+            sell += arr[i].sell;
+        };
+        let display = {
+            buyRating: Math.floor((buy/arr.length)*100),
+            holdRating: Math.floor((hold/arr.length)*100),
+            sellRating: Math.floor((sell/arr.length)*100)
+        }
+        this.setState({ 
+            currentData: display,
+            // length: response.data.length
+        });
+        console.log(display);
     }
     changeColor() {
         var colors = [`#21CE99`, `#F45531`];
@@ -48,7 +75,7 @@ class Ratings extends React.Component {
                     <RatingsStyle.RatingCircle style={{ background: this.state.circleColor }}>
                         <RatingsStyle.CircleContent style={{ fontSize: '26px', color: this.state.color }}>
                             <img src={`Ratings/${this.state.priceTag}-price.png`} style={{ background: this.state.color }}></img> {this.state.currentData.buyRating}
-                            <div style={{ fontSize: '13px' }}> of 43 ratings</div></RatingsStyle.CircleContent>
+                            <div style={{ fontSize: '13px' }}> of {this.state.length} ratings</div></RatingsStyle.CircleContent>
                     </RatingsStyle.RatingCircle>
 
                     <RatingsStyle.ProgressBarContainer>
@@ -72,10 +99,10 @@ class Ratings extends React.Component {
                             <RatingsStyle.MeterLabel style={{ color: 'white' }}>{this.state.currentData.sellRating}</RatingsStyle.MeterLabel>
                         </RatingsStyle.Meter>
 
-                        <RatingsStyle.ArticleContainer>
+                        {/* <RatingsStyle.ArticleContainer>
                             <BuySummary summary={this.state.currentData.buySummary} color={this.state.color} />
                             <SellSummary summary={this.state.currentData.sellSummary} color={this.state.color} />
-                        </RatingsStyle.ArticleContainer>
+                        </RatingsStyle.ArticleContainer> */}
 
                     </RatingsStyle.ProgressBarContainer>
 
