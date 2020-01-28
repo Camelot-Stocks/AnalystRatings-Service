@@ -1,4 +1,4 @@
-#Analyst Ratings 
+# Analyst Ratings 
 ### Set up steps
 Step 1: Run npm install to install dependencies
 Step 2: Create databse named 'stocks_db' in postgreSQL
