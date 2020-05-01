@@ -10,7 +10,7 @@ const connectionString = 'postgres://hien@localhost:5432/stocks_db';
 const db = pgp(connectionString);
 
 const pool = new Pool({
-  host: '52.53.71.156',
+  host: '52.53.71.156', //aws instance address
   database: 'postgres',
   user: 'postgres',
   password: 'hienhien'
@@ -50,19 +50,26 @@ let getReviews = (callback, data) => {
     .catch((err) => callback(err));
 };
 let addAnalyst = (callback, data) => {
-  const query = 'INSERT INTO analysts(name, year, company) values($1, $2, $3)';
-  const queryVal = [data.name, data.year, data.company];
-  db.none(query, queryVal)
+  const query = `INSERT INTO analysts(id, name, year, company) values(${data.id}, ${data.name}, ${data.year}, ${data.company})`;
+  db.none(query)
     .then(() => {
       callback(null, 'Analyst added to DB');
     })
     .catch((err) => callback(err));
 };
-
+let addStock = (callback, data) => {
+  const query = `INSERT INTO stocks(id, name, buySummary, sellSummary) values(${data.id}, ${data.name}, ${data.buySummary}, ${data.sellSummary})`;
+  db.none(query)
+    .then(() => {
+      callback(null, 'Stock added to DB');
+    })
+    .catch((err) => callback(err));
+};
 
 module.exports = {
   getReviews,
   addReview, 
-  addAnalyst
+  addAnalyst,
+  addStock
 };
 

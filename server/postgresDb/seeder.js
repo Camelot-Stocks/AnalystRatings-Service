@@ -1,11 +1,10 @@
 const {Pool} = require('pg');
-// const {queryStr, queryAnalysts, reviewsQuery} = require('./dataGenerator.js');
 const faker = require('faker');
 const path = require('path');
-// const connectionString = 'postgressql://hien@localhost:5432/stocks_db'; 
+const connectionString = 'postgressql://hien@localhost:5432/stocks_db'; 
 
 const pool = new Pool({
-  // connectionString:connectionString
+  connectionString:connectionString,
   user: 'hien',
   port: 5432,
   database: 'stocks_db'
@@ -19,13 +18,13 @@ let seedStocks = () => {
   })
 };
 // `COPY analysts(id,name,year,company) FROM '${path.resolve('generator/analysts.csv')}' DELIMETER ',';`
-let seedAnalysts = () => {
-  pool.query(`COPY analysts(name,year,company) FROM '${path.resolve('generator/analysts.csv')}' DELIMITER ',';`, (err, res) => {
-    if (err) {
-      console.log(err)
-    }
-  })
-};
+// let seedAnalysts = () => {
+//   pool.query(`COPY analysts(name,year,company) FROM '${path.resolve('generator/analysts.csv')}' DELIMITER ',';`, (err, res) => {
+//     if (err) {
+//       console.log(err)
+//     }
+//   })
+// };
 
 // let seedReviews = () => {
 //   for (var i = 1; i < 11; i++) {
@@ -40,8 +39,8 @@ let seedAnalysts = () => {
 
 pool.connect()
   .then(() => console.log('connected successfully'))
-  // .then(() => seedStocks())
-  // .then(() => console.log('Seed stocks successful!'))
+  .then(() => seedStocks())
+  .then(() => console.log('Seed stocks successful!'))
   // .then(() => seedAnalysts())
   // .then(() => console.log('Seed analysts successfully!'))
   // .then(() => seedReviews())

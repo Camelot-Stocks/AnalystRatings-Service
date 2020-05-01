@@ -30,6 +30,15 @@ module.exports = {
           console.log('Posted analyst')
         }
       }, req.body)
+    },
+    postStock: (req, res) => {
+      PG.addStock((err, data) => {
+        if (err) {
+          res.status(400).send(err);
+        } else {
+          console.log('Posted stock')
+        }
+      }, req.body)
     }
   } 
 }

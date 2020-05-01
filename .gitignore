@@ -2,6 +2,7 @@ node_modules
 newrelic.js
 package-lock.json
 
+nginx-optimization.pem
 analalyst-ratings-service.pem
 server/postgresDb/generator/reviews1.csv
 server/postgresDb/generator/reviews2.csv
