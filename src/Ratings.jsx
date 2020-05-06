@@ -8,32 +8,29 @@ class Ratings extends React.Component {
     constructor() {
         super();
         this.state = {
-            listData: [],
             currentData: {},
             length: '',
             color: 'white',
             circleColor: 'white',
             priceTag: ''
         }
-        this.getRealData = this.getRealData.bind(this);
+        //this.getRealData = this.getRealData.bind(this);
     }
 
     componentDidMount() {
         this.changeColor();
         axios.get('/ratings/getData/1').then((response) => {
-            // console.log(response.data);
-            this.getRealData(response.data);
-            var collapseBuy = document.getElementById("buy-collapse");
+            this.getRealData(response.data.rows);
+	    var collapseBuy = document.getElementById("buy-collapse");
             collapseBuy.style.maxHeight = '0px';
             var collapseSell = document.getElementById("sell-collapse");
             collapseSell.style.maxHeight = '0px';
         }).catch((err) => {
+		console.log(err)
         })
         
     }
     getRealData(arr) {
-        // console.log('hi');
-        // console.log(this.state.listData);
         let buy = 0;
         let hold = 0;
         let sell = 0;
@@ -49,9 +46,8 @@ class Ratings extends React.Component {
         }
         this.setState({ 
             currentData: display,
-            // length: response.data.length
-        });
-        console.log(display);
+            length: arr.length
+        })
     }
     changeColor() {
         var colors = [`#21CE99`, `#F45531`];
